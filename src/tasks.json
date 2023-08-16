@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Вынести мусор",
+    "description": "Пойти и вынемти пакет с мусором",
+    "completed": true
+  },
+  {
+    "id": 2,
+    "name": "Помыть посуду",
+    "description": "Описание",
+    "completed": false
+  },
+  {
+    "id": 3,
+    "name": "Сделать сайт",
+    "description": "Описание",
+    "completed": false
+  }
+]
