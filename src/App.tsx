@@ -36,6 +36,14 @@ function TaskList() {
 	// TODO проидумать что я вообще делаю для начала, и мб сделать с ниме ту штуку или browser extention?
 	// QUESTION как сделать лучше именовать цвета где хранить и тп, в tailwind.js?
 
+	// TODO make color picker extention with zoom feature on hold?
+	// QUESTION how to make externtion? with react
+
+	// TODO add tags to tasks
+	// TODO add add task
+	// TODO add search
+
+
 	// function handleTaskStatusChange(taskId) {
 	// 	setTasks(
 	// 		tasks.map((task) => {
@@ -76,7 +84,7 @@ function TaskList() {
 		<>
 			{/* Header */}
 			<div>
-				<header className="bg-testColor py-4 select-none">
+				<header className="bg-taskCard-neutral py-4 select-none">
 					<div className="container mx-auto flex justify-between items-center">
 						<h1 className="text-white text-3xl font-semibold">
 							Todo list
@@ -84,51 +92,54 @@ function TaskList() {
 					</div>
 				</header>
 			</div>
-			{/* Filter */}
-			<div className="text-white">
-				Filter:{" "}
-				<input
-					type="checkbox"
-					checked={filter}
-					onChange={handleFilterToggle}
-				></input>
-			
-			</div>
-			{/* Tasks */}
-			{filter_tasks.map((task) => (
-				<>
-					<div
-						key={task.id}
-						className={
-							task.completed ? "completed_task_card" : "task_card"
-						}
-						onClick={() => handleTaskStatusChange(task.id)}
-					>
-						<div className="flex items-center">
-							<input
-								type="checkbox"
-								className="mr-2"
-								checked={task.completed}
-								// onChange={() => {
-								// 	handleTaskStatusChange(task.id);
-								// }}
-							/>
-
-							<p>{task.name}</p>
-						</div>
-						<p
+			<div className="bg-darkColor justify-center items-center h-screen">
+				{/* Filter */}
+				<div className="text-white">
+					Filter:{" "}
+					<input
+						type="checkbox"
+						checked={filter}
+						onChange={handleFilterToggle}
+					></input>
+				</div>
+				{/* Tasks */}
+				{filter_tasks.map((task) => (
+					<>
+						<div
+							key={task.id}
 							className={
-								!task.completed
-									? "text-taskCard-description_text"
-									: "text-taskCard-description_text text-opacity-25"
+								task.completed
+									? "completed_task_card"
+									: "task_card"
 							}
+							onClick={() => handleTaskStatusChange(task.id)}
 						>
-							{task.description}
-						</p>
-						{/* <i>complete: {task.completed ? "True" : "False"}</i> */}
-					</div>
-				</>
-			))}
+							<div className="flex items-center">
+								<input
+									type="checkbox"
+									className="mr-2"
+									checked={task.completed}
+									// onChange={() => {
+									// 	handleTaskStatusChange(task.id);
+									// }}
+								/>
+
+								<p>{task.name}</p>
+							</div>
+							<p
+								className={
+									!task.completed
+										? "text-taskCard-description_text"
+										: "text-taskCard-description_text text-opacity-25"
+								}
+							>
+								{task.description}
+							</p>
+							{/* <i>complete: {task.completed ? "True" : "False"}</i> */}
+						</div>
+					</>
+				))}
+			</div>
 		</>
 	);
 }

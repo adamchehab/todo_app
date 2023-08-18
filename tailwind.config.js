@@ -17,7 +17,7 @@ export default {
 				// completedTaskdCardBorderColor: "#1C1C1E",
 				// taskdCardDescriptionColor: "#bdbbb6",
 
-				testColor: '#141414',
+				darkColor: '#141414',
 
 				taskCard: {
           neutral: "#1C1C1E",
@@ -25,7 +25,7 @@ export default {
 					border: "#4141415d",
 					// completed: "#31835a1e",
 					completed: "#25252554",
-					description_text: "#a0a0a0",
+					description_text: "#757575",
         },
 			},
 		},
