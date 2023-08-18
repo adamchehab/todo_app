@@ -1,5 +1,5 @@
 .task_card {
-	@apply text-white mt-1 mx-auto max-w-md p-2 bg-taskCard-neutral rounded-2xl border border-taskCard-border hover:bg-taskCard-hover select-none shadow-md;
+	@apply text-white mt-1 mx-auto max-w-md p-2 bg-taskCard-neutral rounded-2xl border border-taskCard-border hover:bg-taskCard-hover select-none shadow-md transition-all duration-200;
 }
 
 /* TODO тут 2 класса по сути дублирубтся - мб это как то обединяется */

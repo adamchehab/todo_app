@@ -24,6 +24,13 @@ function TaskList() {
 	// TODO transition
 
 	// TODO make priority border?
+	// TODO счетчик заданий сверху
+
+
+	// TODO PROJECTS OPTIONS PRIORITY SORTING
+
+
+	// Make so you can choose project
 
 	// NOTE я ща чето делаю но вдруг это плохая практика? вдруг можно лучше? но лучше делать а не делать да?
 
@@ -76,24 +83,33 @@ function TaskList() {
 			</div>
 			<div className="bg-darkColor justify-center items-center h-screen">
 				{/* Top block */}
-				<div className="bg-taskCard-neutral mb-2 pb-2 pt-2 mx-auto max-w-md rounded-b-md p-1">
+				<div className="bg-taskCard-neutral mb-2 mx-auto max-w-md rounded-b-md">
 					{/* Search bar */}
 					<div className="mx-auto max-w-md p-2">
 						<input
-							className="w-full h-7 rounded-[3px] text-sm pl-2"
+							className="w-full h-7 rounded-[3px] text-sm pl-2 outline-none"
 							placeholder="Фильтр по проекту или задаче"
 							value={searchItem}
 							onChange={handleSearchItem}
 						/>
 					</div>
-					{/* Filter */}
-					<div className="text-sm text-taskCard-description_text mx-auto max-w-md pl-2">
-						Скрыть выполненные:{" "}
-						<input
-							type="checkbox"
-							checked={filter}
-							onChange={handleFilterToggle}
-						></input>
+					{/* Filter and button block */}
+					<div className="flex justify-between">
+						{/* Filter */}
+						<div className="text-sm text-taskCard-description_text pl-2">
+							<input
+								type="checkbox"
+								checked={filter}
+								onChange={handleFilterToggle}
+							></input>
+							{" "}Скрыть выполненные
+						</div>
+						{/* Button */}
+						<div>
+							<button className="bg-taskCard-project text-sm p-1 rounded-[3px] hover:bg-taskCard-projectDarker transition-all duration-400 hover:text-gray-200 mr-2 mb-2">
+								Добавить
+							</button>
+						</div>
 					</div>
 				</div>
 				{/* Tasks */}

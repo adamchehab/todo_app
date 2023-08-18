@@ -14,6 +14,7 @@ export default {
 					completed: "#25252554",
 					description_text: "#757575",
 					project: "#399bebff",
+					projectDarker: "#287cc0ff",
         },
 			},
 		},
