@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import "./App.css";
 import tasks_data from "./tasks.json";
 
@@ -31,6 +31,11 @@ function TaskList() {
 	const [tasks, setTasks] = useState(tasks_data);
 
 	// TODO в отдельный компонент вынести
+	// TODO choose better colors
+	// TODO заменить чяекбоксы на иконки?
+	// TODO проидумать что я вообще делаю для начала, и мб сделать с ниме ту штуку или browser extention?
+	// QUESTION как сделать лучше именовать цвета где хранить и тп, в tailwind.js?
+
 	// function handleTaskStatusChange(taskId) {
 	// 	setTasks(
 	// 		tasks.map((task) => {
@@ -69,43 +74,27 @@ function TaskList() {
 
 	return (
 		<>
+			{/* Header */}
 			<div>
-				<header className="bg-gray-800 py-4">
+				<header className="bg-testColor py-4 select-none">
 					<div className="container mx-auto flex justify-between items-center">
 						<h1 className="text-white text-3xl font-semibold">
-							Website Header
+							Todo list
 						</h1>
-						<nav>
-							<a
-								href="#"
-								className="text-gray-300 hover:text-white px-3 py-2"
-							>
-								Home
-							</a>
-							<a
-								href="#"
-								className="text-gray-300 hover:text-white px-3 py-2"
-							>
-								About
-							</a>
-							<a
-								href="#"
-								className="text-gray-300 hover:text-white px-3 py-2"
-							>
-								Contact
-							</a>
-						</nav>
 					</div>
 				</header>
 			</div>
-			<div>
+			{/* Filter */}
+			<div className="text-white">
 				Filter:{" "}
 				<input
 					type="checkbox"
 					checked={filter}
 					onChange={handleFilterToggle}
 				></input>
+			
 			</div>
+			{/* Tasks */}
 			{filter_tasks.map((task) => (
 				<>
 					<div
@@ -127,7 +116,13 @@ function TaskList() {
 
 							<p>{task.name}</p>
 						</div>
-						<p className="text-taskdCardDescriptionColor">
+						<p
+							className={
+								!task.completed
+									? "text-taskCard-description_text"
+									: "text-taskCard-description_text text-opacity-25"
+							}
+						>
 							{task.description}
 						</p>
 						{/* <i>complete: {task.completed ? "True" : "False"}</i> */}

@@ -1,11 +1,10 @@
 .task_card {
-	@apply mt-1 mx-auto max-w-md p-2 bg-taskdCardColor rounded-2xl border border-taskdCardBorderColor hover:bg-cyan-200;
-  user-select: none;
+	@apply text-white mt-1 mx-auto max-w-md p-2 bg-taskCard-neutral rounded-2xl border border-taskCard-border hover:bg-taskCard-hover select-none;
 }
 
+/* TODO тут 2 класса по сути дублирубтся - мб это как то обединяется */
 .completed_task_card {
-	@apply mt-1 mx-auto max-w-md p-2 bg-completedTaskdCardColor rounded-2xl border border-completedTaskdCardBorderColor;
-  user-select: none;
+	@apply text-white text-opacity-25 mt-1 mx-auto max-w-md p-2 bg-taskCard-completed rounded-2xl border border-taskCard-completed select-none;
 }
 
 
@@ -15,10 +14,14 @@ body {
 }
 
 #root {
-  background-color: #78168b;
+  /* background-color: #78168b; */
+  /* background-color: #141414; */
+  background-color: #00063bec;
   background-image: url('https://i1.wp.com/texturefabrik.com/wp-content/uploads/2020/09/texturefabrik_dust-10.jpg');
   background-blend-mode: overlay;
   height: 100vh;
+
+
   /* display: flex;
   align-items: center;
   justify-content: center; */
