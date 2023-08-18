@@ -25,6 +25,8 @@ function TaskList() {
 
 	// TODO make priority border?
 
+	// NOTE я ща чето делаю но вдруг это плохая практика? вдруг можно лучше? но лучше делать а не делать да?
+
 	function handleTaskStatusChange(taskId: number) {
 		setTasks(
 			tasks.map((task) => {
@@ -46,8 +48,10 @@ function TaskList() {
 		filter_tasks = tasks.filter((task) => task.completed === false);
 	}
 
-	filter_tasks = filter_tasks.filter((item) =>
-		item.name.toLowerCase().includes(searchItem.toLowerCase()) || item.project.toLowerCase().includes(searchItem.toLowerCase())
+	filter_tasks = filter_tasks.filter(
+		(item) =>
+			item.name.toLowerCase().includes(searchItem.toLowerCase()) ||
+			item.project.toLowerCase().includes(searchItem.toLowerCase())
 	);
 
 	function handleSearchItem(e) {
@@ -58,35 +62,39 @@ function TaskList() {
 		<>
 			{/* Header */}
 			<div>
-				<header className="bg-taskCard-neutral py-4 select-none">
+				<header className="bg-taskCard-neutral py-4 select-none border-b border-taskCard-border">
 					<div className="container mx-auto flex justify-between items-center">
 						<h1 className="text-white text-3xl font-semibold">
-							Todo list
+							<span>To</span>
+							<span className="text-taskCard-project">
+								do
+							</span>{" "}
+							list
 						</h1>
 					</div>
 				</header>
 			</div>
 			<div className="bg-darkColor justify-center items-center h-screen">
-				{/* Search bar */}
-				<div>
-					<label>
+				{/* Top block */}
+				<div className="bg-taskCard-neutral mb-2 pb-2 pt-2 mx-auto max-w-md rounded-b-md p-1">
+					{/* Search bar */}
+					<div className="mx-auto max-w-md p-2">
 						<input
-							type="text"
-							className="text-sm"
+							className="w-full h-7 rounded-[3px] text-sm pl-2"
 							placeholder="Фильтр по проекту или задаче"
 							value={searchItem}
 							onChange={handleSearchItem}
 						/>
-					</label>
-				</div>
-				{/* Filter */}
-				<div className="text-taskCard-description_text">
-					Скрыть выполненные:{" "}
-					<input
-						type="checkbox"
-						checked={filter}
-						onChange={handleFilterToggle}
-					></input>
+					</div>
+					{/* Filter */}
+					<div className="text-sm text-taskCard-description_text mx-auto max-w-md pl-2">
+						Скрыть выполненные:{" "}
+						<input
+							type="checkbox"
+							checked={filter}
+							onChange={handleFilterToggle}
+						></input>
+					</div>
 				</div>
 				{/* Tasks */}
 				{filter_tasks.map((task) => (
