@@ -2,33 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import tasks_data from "./tasks.json";
 
-// function TaskCard(props) {
-// 	return (
-// 		<div
-// 			key={props.key}
-// 			classNameName={props.complete ? "completed_task_card" : "task_card"}
-// 		>
-// 			<label classNameName="flex items-center">
-// 				<input
-// 					type="checkbox"
-// 					classNameName="mr-2"
-// 					checked={props.complete}
-// 					onChange={props.onStatusChange}
-// 				/>
-
-// 				<h3>{props.name}</h3>
-// 			</label>
-// 			<p classNameName="text-taskdCardDescriptionColor">
-// 				{props.description}
-// 			</p>
-// 			<i>complete: {props.complete ? "True" : "False"}</i>
-// 		</div>
-// 	);
-// }
-
 function TaskList() {
 	const [filter, setFilter] = useState(false);
 	const [tasks, setTasks] = useState(tasks_data);
+
+	const [searchItem, setSearchItem] = useState("");
 
 	// TODO в отдельный компонент вынести
 	// TODO choose better colors
@@ -43,21 +21,9 @@ function TaskList() {
 	// TODO add add task
 	// TODO add search
 
+	// TODO transition
 
-	// function handleTaskStatusChange(taskId) {
-	// 	setTasks(
-	// 		tasks.map((task) => {
-	// 			if (task.id === taskId) {
-	// 				return { ...task, completed: true };
-	// 			} else {
-	// 				return task;
-	// 			}
-	// 		})
-	// 	);
-	// }
-	// function handleTaskStatusChange() {
-	// 	setTasks(tasks.map((task) => task));
-	// }
+	// TODO make priority border?
 
 	function handleTaskStatusChange(taskId: number) {
 		setTasks(
@@ -80,6 +46,14 @@ function TaskList() {
 		filter_tasks = tasks.filter((task) => task.completed === false);
 	}
 
+	filter_tasks = filter_tasks.filter((item) =>
+		item.name.toLowerCase().includes(searchItem.toLowerCase()) || item.project.toLowerCase().includes(searchItem.toLowerCase())
+	);
+
+	function handleSearchItem(e) {
+		setSearchItem(e.target.value);
+	}
+
 	return (
 		<>
 			{/* Header */}
@@ -93,9 +67,21 @@ function TaskList() {
 				</header>
 			</div>
 			<div className="bg-darkColor justify-center items-center h-screen">
+				{/* Search bar */}
+				<div>
+					<label>
+						<input
+							type="text"
+							className="text-sm"
+							placeholder="Фильтр по проекту или задаче"
+							value={searchItem}
+							onChange={handleSearchItem}
+						/>
+					</label>
+				</div>
 				{/* Filter */}
-				<div className="text-white">
-					Filter:{" "}
+				<div className="text-taskCard-description_text">
+					Скрыть выполненные:{" "}
 					<input
 						type="checkbox"
 						checked={filter}
@@ -119,23 +105,18 @@ function TaskList() {
 									type="checkbox"
 									className="mr-2"
 									checked={task.completed}
-									// onChange={() => {
-									// 	handleTaskStatusChange(task.id);
-									// }}
 								/>
 
 								<p>{task.name}</p>
 							</div>
+							<p className={` text-taskCard-project text-sm`}>
+								{task.project}
+							</p>
 							<p
-								className={
-									!task.completed
-										? "text-taskCard-description_text"
-										: "text-taskCard-description_text text-opacity-25"
-								}
+								className={`text-taskCard-description_text font-light text-sm `}
 							>
 								{task.description}
 							</p>
-							{/* <i>complete: {task.completed ? "True" : "False"}</i> */}
 						</div>
 					</>
 				))}
