@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import tasks_data from "./tasks.json";
 
-import { Header } from "./components/header.tsx";
+import { Header } from "./components/Header.tsx";
 import { NavBlock } from "./components/NavBlock.tsx";
 import { TaskList } from "./components/TaskList.tsx";
 
