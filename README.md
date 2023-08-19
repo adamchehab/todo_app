@@ -1,27 +1,32 @@
-# React + TypeScript + Vite
+# Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+// TODO в отдельный компонент вынести
+// TODO choose better colors
+// TODO заменить чяекбоксы на иконки?
+// TODO проидумать что я вообще делаю для начала, и мб сделать с ниме ту штуку или browser extention?
+// QUESTION как сделать лучше именовать цвета где хранить и тп, в tailwind.js?
 
-Currently, two official plugins are available:
+// TODO make color picker extention with zoom feature on hold?
+// QUESTION how to make externtion? with react
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+// TODO add tags to tasks
+// TODO add add task
+// TODO add search
 
-## Expanding the ESLint configuration
+// TODO transition
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+// TODO make priority border?
+// TODO счетчик заданий сверху
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+// TODO PROJECTS OPTIONS PRIORITY SORTING
+// TODO MAKE GLOW SHADOW EFFECT OON HOVER?
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+// FIX when i focus on input search project colors change little bit
+
+// NOTE Интересно а как без tailwind добавляют hover effect?
+
+
+// Make so you can choose project
+
+// NOTE я ща чето делаю но вдруг это плохая практика? вдруг можно лучше? но лучше делать а не делать да?

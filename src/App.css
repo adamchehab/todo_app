@@ -4,7 +4,7 @@
 
 /* TODO тут 2 класса по сути дублирубтся - мб это как то обединяется */
 .completed_task_card {
-	@apply text-white opacity-30 mt-1 mx-auto max-w-md p-2 bg-taskCard-completed rounded-2xl border border-taskCard-completed select-none ;
+	@apply text-white opacity-30 mt-1 mx-auto max-w-md p-2 bg-taskCard-completed rounded-2xl border border-taskCard-completed select-none transition-all duration-150;
 }
 
 
