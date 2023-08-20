@@ -1,4 +1,21 @@
-export function TaskList({ tasks, handleTaskStatusChange }) {
+import { AiOutlineClose } from "react-icons/ai";
+
+export function TaskList({ tasks, setTasks }) {
+	function handleTaskStatusChange(taskId: number) {
+		setTasks(
+			tasks.map((task) => {
+				if (task.id === taskId) {
+					return { ...task, completed: !task.completed };
+				}
+				return task;
+			})
+		);
+	}
+
+	function handleTaskDelete(taskId: number) {
+		setTasks(tasks.filter((task) => task.id !== taskId));
+	}
+
 	return (
 		<>
 			{tasks.map((task) => (
@@ -10,13 +27,20 @@ export function TaskList({ tasks, handleTaskStatusChange }) {
 						}
 						onClick={() => handleTaskStatusChange(task.id)}
 					>
-						<div className="flex items-center">
+						<div className="flex items-center justify-between">
 							<input
 								type="checkbox"
 								className="mr-2"
 								checked={task.completed}
 							/>
-							<p>{task.name}</p>
+							<p className="mr-auto">{task.name}</p>
+							<AiOutlineClose
+								className="opacity-20 hover:opacity-100 hover:text-red-500"
+								onClick={(e) => {
+									e.stopPropagation();
+									handleTaskDelete(task.id);
+								}}
+							/>
 						</div>
 						<p className={` text-taskCard-project text-sm`}>
 							{task.project}

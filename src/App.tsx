@@ -8,29 +8,16 @@ import { TaskList } from "./components/TaskList.tsx";
 import { AddTaskPopup } from "./components/AddTaskPopup.tsx";
 
 export default function TaskListApp() {
-	const [filter, setFilter] = useState(false);
 	const [tasks, setTasks] = useState(tasks_data);
+	const [filter, setFilter] = useState(false);
 	const [searchItem, setSearchItem] = useState("");
-
 	const [addTaskWindow, setAddTaskWindow] = useState(false);
 
-	function handleTaskStatusChange(taskId: number) {
-		setTasks(
-			tasks.map((task) => {
-				if (task.id === taskId) {
-					return { ...task, completed: !task.completed };
-				}
-				return task;
-			})
-		);
-	}
-
+	// Filter
 	let filter_tasks = tasks;
-
 	if (filter === true) {
 		filter_tasks = tasks.filter((task) => task.completed === false);
 	}
-
 	filter_tasks = filter_tasks.filter(
 		(item) =>
 			item.name.toLowerCase().includes(searchItem.toLowerCase()) ||
@@ -52,10 +39,7 @@ export default function TaskListApp() {
 					setAddTaskWindow={setAddTaskWindow}
 				/>
 				{/* Tasks List */}
-				<TaskList
-					tasks={filter_tasks}
-					handleTaskStatusChange={handleTaskStatusChange}
-				/>
+				<TaskList tasks={filter_tasks} setTasks={setTasks} />
 				<AddTaskPopup
 					addTaskWindow={addTaskWindow}
 					setAddTaskWindow={setAddTaskWindow}
