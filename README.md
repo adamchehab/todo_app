@@ -1,5 +1,8 @@
 # Todo
 
+TODO тема + смена языка
+TODO responsive design
+
 // TODO в отдельный компонент вынести
 // TODO choose better colors
 // TODO заменить чяекбоксы на иконки?

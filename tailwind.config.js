@@ -15,6 +15,8 @@ export default {
 					description_text: "#757575",
 					project: "#314ce9ff",
 					projectDarker: "#2137b4ff",
+					cancel: "#c91818ff",
+					cancel_darker: "#940d0dff",
         },
 			},
 		},

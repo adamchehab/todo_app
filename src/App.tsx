@@ -5,11 +5,14 @@ import tasks_data from "./tasks.json";
 import { Header } from "./components/Header.tsx";
 import { NavBlock } from "./components/NavBlock.tsx";
 import { TaskList } from "./components/TaskList.tsx";
+import { AddTaskPopup } from "./components/AddTaskPopup.tsx";
 
 export default function TaskListApp() {
 	const [filter, setFilter] = useState(false);
 	const [tasks, setTasks] = useState(tasks_data);
 	const [searchItem, setSearchItem] = useState("");
+
+	const [addTaskWindow, setAddTaskWindow] = useState(false);
 
 	function handleTaskStatusChange(taskId: number) {
 		setTasks(
@@ -20,10 +23,6 @@ export default function TaskListApp() {
 				return task;
 			})
 		);
-	}
-
-	function handleFilterToggle() {
-		setFilter(!filter);
 	}
 
 	let filter_tasks = tasks;
@@ -38,10 +37,6 @@ export default function TaskListApp() {
 			item.project.toLowerCase().includes(searchItem.toLowerCase())
 	);
 
-	function handleSearchItem(e: React.ChangeEvent<HTMLInputElement>) {
-		setSearchItem(e.target.value);
-	}
-
 	return (
 		<>
 			{/* Header */}
@@ -51,14 +46,21 @@ export default function TaskListApp() {
 				{/* Nav Block */}
 				<NavBlock
 					searchItem={searchItem}
-					handleSearchItem={handleSearchItem}
+					setSearchItem={setSearchItem}
 					filter={filter}
-					handleFilterToggle={handleFilterToggle}
+					setFilter={setFilter}
+					setAddTaskWindow={setAddTaskWindow}
 				/>
 				{/* Tasks List */}
 				<TaskList
 					tasks={filter_tasks}
 					handleTaskStatusChange={handleTaskStatusChange}
+				/>
+				<AddTaskPopup
+					addTaskWindow={addTaskWindow}
+					setAddTaskWindow={setAddTaskWindow}
+					tasks={tasks}
+					setTasks={setTasks}
 				/>
 			</div>
 		</>
