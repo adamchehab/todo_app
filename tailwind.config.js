@@ -17,6 +17,7 @@ export default {
 					projectDarker: "#2137b4ff",
 					cancel: "#c91818ff",
 					cancel_darker: "#940d0dff",
+					error_text: "#df5656ff",
         },
 			},
 		},
