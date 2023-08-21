@@ -13,6 +13,7 @@ export default function TaskListApp() {
 	const [searchItem, setSearchItem] = useState("");
 	const [addTaskWindow, setAddTaskWindow] = useState(false);
 
+	
 	// Filter
 	let filter_tasks = tasks;
 	if (filter === true) {
