@@ -1,5 +1,7 @@
 # Todo
 
+TODO pages add + move from app to pages
+
 TODO тема + смена языка
 TODO responsive design
 

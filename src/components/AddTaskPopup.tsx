@@ -39,13 +39,23 @@ export function AddTaskPopup({
 		}
 	}
 
+	const handleFieldChange = (e) => {
+			setNewTask({
+				...newTask,
+				[e.target.name]: e.target.value,
+			});
+	}
+
 	return (
 		<>
 			{/* TODO can i add animation smooth popup? */}
 			{addTaskWindow && (
 				<div
 					className="w-full h-full bg-black/50 fixed top-0 left-0 flex pt-36 justify-center"
-					onClick={() => setAddTaskWindow(false)}
+					onClick={() => {
+						setErrorName(false);
+						setAddTaskWindow(false);
+					}}
 				>
 					<div
 						className="w-[400px] h-[200px] bg-taskCard-hover rounded-lg p-4 px-6 select-none"
@@ -53,38 +63,25 @@ export function AddTaskPopup({
 					>
 						<p>Добавить задачу</p>
 						<input
+							name="name"
 							className="w-full h-7 rounded-[3px] text-sm outline-none pl-2 mt-2"
 							placeholder="Название"
 							value={newTask.name}
-							onChange={(e) => {
-								setErrorName(false);
-								setNewTask({
-									...newTask,
-									name: e.target.value,
-								});
-							}}
+							onChange={handleFieldChange}
 						></input>
 						<input
+							name="project"
 							className="w-full h-7 rounded-[3px] text-sm outline-none pl-2 mt-2"
 							placeholder="Проект"
 							value={newTask.project}
-							onChange={(e) =>
-								setNewTask({
-									...newTask,
-									project: e.target.value,
-								})
-							}
+							onChange={handleFieldChange}
 						></input>
 						<input
+							name="description"
 							className="w-full h-7 rounded-[3px] text-sm outline-none pl-2 my-2"
 							placeholder="Описание"
 							value={newTask.description}
-							onChange={(e) =>
-								setNewTask({
-									...newTask,
-									description: e.target.value,
-								})
-							}
+							onChange={handleFieldChange}
 						></input>
 
 						{/* TODO Вынести в отдельны класс кнопку */}

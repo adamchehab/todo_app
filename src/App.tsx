@@ -2,10 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import tasks_data from "./tasks.json";
 
-import { Header } from "./components/Header.tsx";
-import { NavBlock } from "./components/NavBlock.tsx";
-import { TaskList } from "./components/TaskList.tsx";
-import { AddTaskPopup } from "./components/AddTaskPopup.tsx";
+import { Header, NavBlock, TaskList, AddTaskPopup } from "./components/index";
 
 export default function TaskListApp() {
 	const [tasks, setTasks] = useState(tasks_data);
@@ -29,7 +26,7 @@ export default function TaskListApp() {
 		<>
 			{/* Header */}
 			<Header />
-			{/* Main Content */}
+			{/* Page Content div*/}
 			<div className="bg-darkColor justify-center items-center h-screen">
 				{/* Nav Block */}
 				<NavBlock
@@ -41,6 +38,7 @@ export default function TaskListApp() {
 				/>
 				{/* Tasks List */}
 				<TaskList tasks={filter_tasks} setTasks={setTasks} />
+				{/* Add task popup */}
 				<AddTaskPopup
 					addTaskWindow={addTaskWindow}
 					setAddTaskWindow={setAddTaskWindow}
