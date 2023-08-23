@@ -1,4 +1,5 @@
 import { AiOutlineClose } from "react-icons/ai";
+import { HiFlag } from "react-icons/hi";
 
 export function TaskList({ tasks, setTasks }) {
 	function handleTaskStatusChange(taskId: number) {
@@ -16,15 +17,30 @@ export function TaskList({ tasks, setTasks }) {
 		setTasks(tasks.filter((task) => task.id !== taskId));
 	}
 
+	function get_color(task): string {
+		if (task.completed === true) return "text-taskCard-description_text";
+
+		switch (task.priority) {
+			case 1:
+				return "text-yellow-500";
+			case 2:
+				return "text-orange-500";
+			case 3:
+				return "text-red-500";
+			default:
+				return "text-white";
+		}
+	}
+
 	return (
 		<>
 			{tasks.map((task) => (
 				<>
 					<div
 						key={task.id}
-						className={
+						className={`${
 							task.completed ? "completed_task_card" : "task_card"
-						}
+						}`}
 						onClick={() => handleTaskStatusChange(task.id)}
 					>
 						<div className="flex items-center justify-between">
@@ -42,7 +58,13 @@ export function TaskList({ tasks, setTasks }) {
 								}}
 							/>
 						</div>
-						<p className={` text-taskCard-project text-sm`}>
+						<p
+							className={`${
+								task.completed
+									? `text-taskCard-description_text`
+									: `text-taskCard-project`
+							} text-sm font-semibold`}
+						>
 							{task.project}
 						</p>
 						<p
@@ -50,6 +72,13 @@ export function TaskList({ tasks, setTasks }) {
 						>
 							{task.description}
 						</p>
+						{task.priority !== 0 ? (
+							<HiFlag
+								className={`transition-all duration-200 ${get_color(
+									task
+								)}`}
+							/>
+						) : null}
 					</div>
 				</>
 			))}

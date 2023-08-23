@@ -1,3 +1,7 @@
+import { DropdownList } from "./DropdownList";
+
+const options = ["date", "name", "priority"];
+
 export function NavBlock({
 	searchItem,
 	setSearchItem,
@@ -27,6 +31,7 @@ export function NavBlock({
 					></input>{" "}
 					Скрыть выполненные
 				</div>
+				{/* <DropdownList options={options} /> */}
 				{/* Button */}
 				<div>
 					<button
