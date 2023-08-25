@@ -16,6 +16,7 @@
 
     /* Linting */
     "strict": false,
+    // TODO how to make it warning but not error
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
