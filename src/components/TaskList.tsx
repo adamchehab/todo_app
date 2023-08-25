@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { db } from "../firebase";
 import { updateDoc, doc, deleteDoc } from "firebase/firestore";
 
-export function TaskList({ tasks, setTasks }) {
+export function TaskList({ tasks }) {
 	async function handleTaskStatusChange(todo) {
 		// QUESTION: i guess i dont need that anymore cuz i get them updated from db..?
 		// setTasks(

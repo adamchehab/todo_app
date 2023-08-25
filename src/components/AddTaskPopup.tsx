@@ -6,9 +6,7 @@ import { addDoc } from "firebase/firestore";
 
 export function AddTaskPopup({
 	addTaskWindow,
-	setAddTaskWindow,
-	tasks,
-	setTasks,
+	setAddTaskWindow
 }) {
 	const [newTaskData, setNewTaskData] = useState({
 		name: "",
