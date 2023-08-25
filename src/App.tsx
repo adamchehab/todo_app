@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import tasks_data from "./tasks.json";
 
 import { Header, NavBlock, TaskList, AddTaskPopup } from "./components/index";
 
 export default function TaskListApp() {
-	const [tasks, setTasks] = useState(tasks_data);
+	const [tasks, setTasks] = useState([]);
 	const [filter, setFilter] = useState(false);
 	const [searchItem, setSearchItem] = useState("");
 	const [addTaskWindow, setAddTaskWindow] = useState(false);
 
-	
+	// Retrieve data from local storage on component mount
+	useEffect(() => {
+		const storedData = localStorage.getItem("myTasks");
+		if (storedData) {
+			setTasks(JSON.parse(storedData));
+		}
+	}, []);
+
 	// Filter
 	let filter_tasks = tasks;
 	if (filter === true) {

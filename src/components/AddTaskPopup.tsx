@@ -33,7 +33,9 @@ export function AddTaskPopup({
 				completed: false,
 			};
 
-			setTasks([...tasks, tas]);
+			const newData = [...tasks, tas];
+			setTasks(newData);
+			localStorage.setItem("myTasks", JSON.stringify(newData));
 			handleClearFields();
 			setAddTaskWindow(false);
 		}

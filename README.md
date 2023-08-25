@@ -1,5 +1,7 @@
 # Todo
 
+TODO need reducer for task addind removing and editing
+
 TODO pages add + move from app to pages
 
 TODO тема + смена языка

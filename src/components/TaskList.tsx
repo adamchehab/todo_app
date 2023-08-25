@@ -13,7 +13,9 @@ export function TaskList({ tasks, setTasks }) {
 	}
 
 	function handleTaskDelete(taskId: number) {
-		setTasks(tasks.filter((task) => task.id !== taskId));
+		const newData = tasks.filter((task) => task.id !== taskId);
+		setTasks(newData);
+		localStorage.setItem("myTasks", JSON.stringify(newData));
 	}
 
 	return (
