@@ -1,4 +1,8 @@
+import { collection } from "firebase/firestore";
 import { useState } from "react";
+
+import { db } from "../firebase";
+import { addDoc } from "firebase/firestore";
 
 export function AddTaskPopup({
 	addTaskWindow,
@@ -6,7 +10,7 @@ export function AddTaskPopup({
 	tasks,
 	setTasks,
 }) {
-	const [newTask, setNewTask] = useState({
+	const [newTaskData, setNewTaskData] = useState({
 		name: "",
 		project: "",
 		description: "",
@@ -14,34 +18,37 @@ export function AddTaskPopup({
 	const [errorName, setErrorName] = useState(false);
 
 	function handleClearFields() {
-		setNewTask({
+		setNewTaskData({
 			name: "",
 			project: "",
 			description: "",
 		});
 	}
 
-	function handleAddTask() {
-		if (newTask.name === "") {
+	async function handleAddTask() {
+		if (newTaskData.name === "") {
 			setErrorName(true);
 		} else {
-			const tas = {
-				id: tasks.length,
-				name: newTask.name,
-				project: newTask.project,
-				description: newTask.description,
+			const newTask = {
+				// id: tasks.length,
+				name: newTaskData.name,
+				project: newTaskData.project,
+				description: newTaskData.description,
 				completed: false,
 			};
 
-			setTasks([...tasks, tas]);
+			// setTasks([...tasks, newTask]);
+
+			await addDoc(collection(db, 'todos'), newTask);
+
 			handleClearFields();
 			setAddTaskWindow(false);
 		}
 	}
 
 	const handleFieldChange = (e) => {
-			setNewTask({
-				...newTask,
+			setNewTaskData({
+				...newTaskData,
 				[e.target.name]: e.target.value,
 			});
 	}
@@ -66,21 +73,21 @@ export function AddTaskPopup({
 							name="name"
 							className="w-full h-7 rounded-[3px] text-sm outline-none pl-2 mt-2"
 							placeholder="Название"
-							value={newTask.name}
+							value={newTaskData.name}
 							onChange={handleFieldChange}
 						></input>
 						<input
 							name="project"
 							className="w-full h-7 rounded-[3px] text-sm outline-none pl-2 mt-2"
 							placeholder="Проект"
-							value={newTask.project}
+							value={newTaskData.project}
 							onChange={handleFieldChange}
 						></input>
 						<input
 							name="description"
 							className="w-full h-7 rounded-[3px] text-sm outline-none pl-2 my-2"
 							placeholder="Описание"
-							value={newTask.description}
+							value={newTaskData.description}
 							onChange={handleFieldChange}
 						></input>
 
@@ -94,9 +101,9 @@ export function AddTaskPopup({
 							)}
 
 							<div className="flex justify-end w-[180px]">
-								{newTask.name == "" &&
-								newTask.project == "" &&
-								newTask.description == "" ? null : (
+								{newTaskData.name == "" &&
+								newTaskData.project == "" &&
+								newTaskData.description == "" ? null : (
 									<button
 										className="bg-taskCard-cancel text-sm pl-2 pr-2 p-1 rounded-[3px] hover:bg-taskCard-cancel_darker transition-all duration-400 hover:text-gray-200 shadow-md shadow-taskCard-cancel/50 hover:shadow-inner ml-auto"
 										onClick={handleClearFields}

@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import tasks_data from "./tasks.json";
+// import tasks_data from "./tasks.json";
 
 import { Header, NavBlock, TaskList, AddTaskPopup } from "./components/index";
 
+import { db } from "./firebase";
+import { query, collection, onSnapshot } from "firebase/firestore";
+
 export default function TaskListApp() {
-	const [tasks, setTasks] = useState(tasks_data);
+	const [tasks, setTasks] = useState([]);
 	const [filter, setFilter] = useState(false);
 	const [searchItem, setSearchItem] = useState("");
 	const [addTaskWindow, setAddTaskWindow] = useState(false);
 
-	
+	// Load data from firebase
+	useEffect(() => {
+		const q = query(collection(db, "todos"));
+		const unsub = onSnapshot(q, (querySnapshot) => {
+			const todosArr = [];
+			querySnapshot.forEach((doc) => {
+				todosArr.push({ ...doc.data(), id: doc.id });
+			});
+			setTasks(todosArr);
+		});
+		return () => unsub();
+	}, []);
+
 	// Filter
 	let filter_tasks = tasks;
 	if (filter === true) {
