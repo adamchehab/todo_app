@@ -1,24 +1,30 @@
-.task_card {
-	@apply text-white mt-1 mx-auto max-w-md p-2 bg-taskCard-neutral rounded-2xl border border-taskCard-border hover:bg-taskCard-hover select-none shadow-md transition-all duration-200;
+.card {
+  background-color: rgba(65, 65, 65, 0.726);
+  height: 100px;
+  width: 180px;
+  margin: 10px;
+  padding: 10px;
 }
 
-/* TODO тут 2 класса по сути дублирубтся - мб это как то обединяется */
-.completed_task_card {
-	@apply text-white opacity-30 mt-1 mx-auto max-w-md p-2 bg-taskCard-completed rounded-2xl border border-taskCard-completed select-none transition-all duration-150;
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(79, 168, 94, 0.377);
 }
 
-
-body {
-  margin: 0;
-  padding: 0;
+.title {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(79, 168, 94, 0.377); 
 }
 
-#root {
-  /* background-color: #78168b; */
-  /* background-color: #141414; */
+.text {
+  display: inline;
+  background-color: rgba(205, 57, 235, 0.342);
+  margin-right: 10px;
+  /* max-width: min-content; */
+}
 
-  /* background-color: #00063bec;
-  background-image: url('https://i1.wp.com/texturefabrik.com/wp-content/uploads/2020/09/texturefabrik_dust-10.jpg');
-  background-blend-mode: overlay;
-  height: 100vh; */
+.count {
+  color: rgb(18, 189, 231);
 }
