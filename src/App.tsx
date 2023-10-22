@@ -4,15 +4,16 @@ function MyComponent({ title, count }) {
   return (
     <>
       <div className="card">
-        <div className="content">
+        <div className="container">
           <div className="title">
-            <div className="text">
+            <span className="text">
               {title}
-            </div>
-            <div className="count">
+            </span>
+            <span className="count">
               {count}
-            </div>
+            </span>
           </div>
+          <div>All</div>
         </div>
       </div>
     </>

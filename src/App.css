@@ -1,30 +1,35 @@
 .card {
   background-color: rgba(65, 65, 65, 0.726);
   height: 100px;
-  width: 180px;
+  width: 220px;
   margin: 10px;
   padding: 10px;
 }
 
 .container {
-  display: flex;
-  justify-content: space-between;
   background-color: rgba(79, 168, 94, 0.377);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding: 10px; */
 }
 
 .title {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgba(79, 168, 94, 0.377); 
+  display: inline-block;
+  background-color: rgba(99, 114, 131, 0.377); 
+  /* vertical-align: top; */
 }
 
 .text {
-  display: inline;
+  display: inline-block;
   background-color: rgba(205, 57, 235, 0.342);
-  margin-right: 10px;
+  /* margin-right: 10px; */
   /* max-width: min-content; */
 }
 
 .count {
+  display: inline-block;
   color: rgb(18, 189, 231);
+  background-color: bisque;
 }
